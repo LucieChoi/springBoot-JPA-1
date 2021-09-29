@@ -98,7 +98,7 @@ public class ItemController {
      * 트랜잭션 커밋 시점에 변경 감지가 실행됨!
      */
     @PostMapping("items/{itemId}/edit")
-    public String updateItem(@ModelAttribute("form") BookForm form) {
+    public String updateItem(@ModelAttribute("form") BookForm form, @PathVariable String itemId) {
 
         itemService.updateItem(form.getId(), form.getName(), form.getPrice());
         return "redirect:/items";
