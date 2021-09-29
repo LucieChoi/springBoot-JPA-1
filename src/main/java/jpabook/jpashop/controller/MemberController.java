@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -38,5 +39,20 @@ public class MemberController {
         memberService.join(member);
 
         return "redirect:/";
+    }
+
+    /**
+     * 회원 목록
+     * @param model
+     * 조회한 상품을 뷰에 전달하기 위해 스프링 MVC가 제공하는 MODEL 객체에 보관
+     * @return
+     * 실행할 뷰 이름을 반환
+     */
+    @GetMapping("/members")
+    public String list(Model model) {
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members", members);
+
+        return "members/memberList";
     }
 }

@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
+/* 엔티티는 핵심 비즈니스 로직만 가지고 있고, 화면을 위한 로직은 없어야 한다 */
 public class Member {
 
     @Id @GeneratedValue
