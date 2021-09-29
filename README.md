@@ -46,7 +46,7 @@
 - 주문 기능 테스트
 - 주문 검색 기능 개발
 
-**웹 계층 개발**[NOTION](https://lucie-ko.notion.site/7-5ebd31d6c8ab4a038742ab5a85164ba4)
+**SEC 7. 웹 계층 개발**[NOTION](https://lucie-ko.notion.site/7-5ebd31d6c8ab4a038742ab5a85164ba4)
 
 - 홈 화면과 레이아웃
 - 회원 등록
