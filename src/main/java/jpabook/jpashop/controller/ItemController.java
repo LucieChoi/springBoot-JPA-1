@@ -1,12 +1,15 @@
 package jpabook.jpashop.controller;
 
 import jpabook.jpashop.domain.item.Book;
+import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -31,11 +34,9 @@ public class ItemController {
     @PostMapping("/items/new")
     public String create(BookForm form) {
 
-        /**실무
-         * 직접 엔티티 쓰지 않음
-         * setter은 가능한 한 쓰지 않는 게 좋음
-         */
+        // 직접 엔티티 쓰지 않음
         Book book = new Book();
+        // setter은 가능한 한 쓰지 않는 게 좋음
         book.setName(form.getName());
         book.setPrice(form.getPrice());
         book.setStockQuantity(form.getStockQuantity());
@@ -44,5 +45,16 @@ public class ItemController {
 
         itemService.saveItem(book);
         return "redirect:/items";
+    }
+
+    /**
+     * model에 담아둔 상품 목록인 items를 꺼내서 상품 정보 출력
+     */
+    @GetMapping("/items")
+    public String list(Model model){
+
+        List<Item>items=itemService.findItems();
+        model.addAttribute("items",items);
+        return "items/itemList";
     }
 }
